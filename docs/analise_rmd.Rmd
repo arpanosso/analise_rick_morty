@@ -9,6 +9,10 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+```{r echo=FALSE, fig.cap="",fig.align='center',out.width = "200px"}
+knitr::include_graphics("wubba_lubba.jpg")
+```
+
 # Como consegui os dados ?
 
 ```{r,eval=FALSE}
@@ -80,7 +84,7 @@ readr::write_rds(rick_and_morty, "data/rick_and_morty.rds")
 
 # Visualização
 
-```{r}
+```{r,message=FALSE,warning=FALSE}
 library(dplyr)
 library(ggplot2)
 source("../R/graficos.R")
