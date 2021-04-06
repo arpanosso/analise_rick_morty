@@ -1,4 +1,5 @@
 tema_rickandmorty <- function(){
+  windowsFonts("Get Schwifty" = windowsFont("Get Schwifty"))
   ggplot2::theme(
     text = ggplot2::element_text(
       colour = "#11a2c6",

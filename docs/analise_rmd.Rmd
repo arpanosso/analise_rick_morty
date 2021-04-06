@@ -17,6 +17,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # scrape
 
+
 library(magrittr)
 
 url <- "https://en.wikipedia.org/wiki/List_of_Rick_and_Morty_episodes"
@@ -85,7 +86,6 @@ library(ggplot2)
 source("../R/graficos.R")
 rick_and_morty <- readr::read_rds("../data/rick_and_morty.rds")
 
-
 rick_and_morty %>%
   mutate(num_temporada = as.factor(num_temporada)) %>%
   ggplot(aes(
@@ -101,6 +101,28 @@ rick_and_morty %>%
     title = "Rick and Morty"
   ) +
  tema_rickandmorty() 
-
 ```
 
+# Visualização
+
+```{r}
+rick_and_morty <- readr::read_rds("../data/rick_and_morty.rds")
+
+rick_and_morty %>%
+  mutate(num_temporada = as.factor(num_temporada)) %>%
+  group_by(num_temporada) %>% 
+  summarise(y = sum(qtd_espectadores_EUA)) %>% 
+  ggplot(aes(
+    x = num_temporada,
+    y = y,
+    fill = num_temporada)
+  ) +
+  geom_col() +
+  labs(
+    x = "temporada",
+    y = "audiencia",
+    fill = "temporada",
+    title = "Rick and Morty"
+  ) +
+ tema_rickandmorty() 
+```
